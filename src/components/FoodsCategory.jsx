@@ -3,6 +3,23 @@ import { data } from "../data/data.js";
 import { useState } from "react";
 const FoodsCategory = () => {
   const [foods, setFoods] = useState(data);
+
+  const filterType = (category) => {
+    setFoods(
+      data.filter((Items) => {
+        return Items.category === category;
+      })
+    );
+  };
+
+  const filterPrice = (price) => {
+    setFoods(
+      data.filter((Items) => {
+        return Items.price === price;
+      })
+    );
+  };
+
   return (
     <div className="px-4 py-12 max-h-[1640px] mx-auto ">
       <h1 className="font-bold text-4xl text-orange-600 text-center">
@@ -14,19 +31,34 @@ const FoodsCategory = () => {
         <div>
           <p className="font-bold text-gray-700">Filter Type</p>
           <div className="flex justify-between flex-wrap">
-            <button className="border-orange-600 m-1 text-orange-600 hover:bg-orange-600 hover:text-white">
+            <button
+              onClick={() => setFoods(data)}
+              className="border-orange-600 m-1 text-orange-600 hover:bg-orange-600 hover:text-white"
+            >
               All
             </button>
-            <button className="border-orange-600 m-1 text-orange-600 hover:bg-orange-600 hover:text-white">
-              Burger
+            <button
+              onClick={() => filterType("burger")}
+              className="border-orange-600 m-1 text-orange-600 hover:bg-orange-600 hover:text-white"
+            >
+              Burgers
             </button>
-            <button className="border-orange-600 m-1 text-orange-600 hover:bg-orange-600 hover:text-white">
+            <button
+              onClick={() => filterType("pizza")}
+              className="border-orange-600 m-1 text-orange-600 hover:bg-orange-600 hover:text-white"
+            >
               Pizza
             </button>
-            <button className="border-orange-600 m-1 text-orange-600 hover:bg-orange-600 hover:text-white">
+            <button
+              onClick={() => filterType("salad")}
+              className="border-orange-600 m-1 text-orange-600 hover:bg-orange-600 hover:text-white"
+            >
               Salads
             </button>
-            <button className="border-orange-600 m-1 text-orange-600 hover:bg-orange-600 hover:text-white">
+            <button
+              onClick={() => filterType("chicken")}
+              className="border-orange-600 m-1 text-orange-600 hover:bg-orange-600 hover:text-white"
+            >
               Chickens
             </button>
           </div>
@@ -35,16 +67,28 @@ const FoodsCategory = () => {
         <div>
           <p className="font-bold text-gray-700">Filter Price</p>
           <div className="flex justify-between flex-wrap max-w-[390px]">
-            <button className="m-1m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white">
+            <button
+              onClick={() => filterPrice("$")}
+              className="m-1m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white"
+            >
               $
             </button>
-            <button className="border-orange-600 m-1 text-orange-600 hover:bg-orange-600 hover:text-white">
+            <button
+              onClick={() => filterPrice("$$")}
+              className="border-orange-600 m-1 text-orange-600 hover:bg-orange-600 hover:text-white"
+            >
               $$
             </button>
-            <button className="border-orange-600 m-1 text-orange-600 hover:bg-orange-600 hover:text-white">
+            <button
+              onClick={() => filterPrice("$$$")}
+              className="border-orange-600 m-1 text-orange-600 hover:bg-orange-600 hover:text-white"
+            >
               $$$
             </button>
-            <button className="border-orange-600 m-1 text-orange-600 hover:bg-orange-600 hover:text-white">
+            <button
+              onClick={() => filterPrice("$$$$")}
+              className="border-orange-600 m-1 text-orange-600 hover:bg-orange-600 hover:text-white"
+            >
               $$$$
             </button>
           </div>

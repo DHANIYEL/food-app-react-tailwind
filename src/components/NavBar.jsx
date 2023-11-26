@@ -1,6 +1,7 @@
 import React from "react";
-import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import { BsFillCartFill } from "react-icons/bs";
+import { TbTruckDelivery } from "react-icons/tb";
 
 function NavBar() {
   return (
@@ -32,6 +33,23 @@ function NavBar() {
         <BsFillCartFill size={20} />
         Cart
       </button>
+      {/* mobile menu  */}
+      {/* overlay */}
+
+      <div className="backdrop-filter backdrop-blur-sm bg-opacity-50 fixed z-10 w-full h-screen left-0 top-0"></div>
+      {/* side rower */}
+      <div className="backdrop-filter backdrop-blur-xl bg-opacity-50 h-screen w-[300px] z-10 top-0 left-0 fixed duration-300 shadow-md">
+        <AiOutlineClose size={30} className="absolute top-4 right-4" />
+        <h2 className="text-2xl p-4">
+          Best<span className="font-bold">Eats</span>
+        </h2>
+        <ul className="flex flex-col p-4 text-gray-800">
+          <li className="flex p-4 text-xl">
+            <TbTruckDelivery size={30} className="mr-4" />
+            Orders
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }

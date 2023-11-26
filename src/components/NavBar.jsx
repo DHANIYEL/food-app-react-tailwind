@@ -1,14 +1,23 @@
 import React from "react";
-import { AiOutlineClose, AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
-import { BsFillCartFill } from "react-icons/bs";
+import { useState } from "react";
+import {
+  AiFillTag,
+  AiOutlineClose,
+  AiOutlineMenu,
+  AiOutlineSearch,
+} from "react-icons/ai";
+import { BsFillCartFill, BsFillSaveFill } from "react-icons/bs";
 import { TbTruckDelivery } from "react-icons/tb";
+import { MdFavorite, MdHelp } from "react-icons/md";
+import { FaWallet, FaUserFriends } from "react-icons/fa";
 
 function NavBar() {
+  const [nav, setNav] = useState(false);
   return (
     <div className="m-w-[1680] mx-auto flex justify-between items-center p-4">
       {/* nav left side  */}
       <div className="flex items-center">
-        <div className="cursor-pointer">
+        <div onClick={() => setNav(!nav)} className="cursor-pointer">
           <AiOutlineMenu size={30} />
         </div>
         <h1 className="text-2xl sm:text-3xl lg:text-4xl p-2">
@@ -29,24 +38,61 @@ function NavBar() {
         />
       </div>
       {/* Cart  */}
-      <button className="flex items-center gap-1.5 bg-black text-white py-2 rounded-full hidden md:flex">
+      <button className="items-center gap-1.5 bg-black text-white py-2 rounded-full hidden md:flex">
         <BsFillCartFill size={20} />
         Cart
       </button>
       {/* mobile menu  */}
       {/* overlay */}
-
-      <div className="backdrop-filter backdrop-blur-sm bg-opacity-50 fixed z-10 w-full h-screen left-0 top-0"></div>
+      {nav ? (
+        <div className="backdrop-filter backdrop-blur-sm bg-opacity-30 fixed z-10 w-full h-screen left-0 top-0"></div>
+      ) : (
+        ""
+      )}
       {/* side rower */}
-      <div className="backdrop-filter backdrop-blur-xl bg-opacity-50 h-screen w-[300px] z-10 top-0 left-0 fixed duration-300 shadow-md">
-        <AiOutlineClose size={30} className="absolute top-4 right-4" />
+      <div
+        className={
+          nav
+            ? "backdrop-filter backdrop-blur-lg bg-opacity-50 h-screen w-[300px] z-10 top-0 left-0 fixed duration-300 shadow-md"
+            : "backdrop-filter backdrop-blur-lg bg-opacity-50 h-screen w-[300px] z-10 top-0 left-[-100%] fixed duration-500 shadow-md"
+        }
+      >
+        <AiOutlineClose
+          onClick={() => setNav(!nav)}
+          size={30}
+          className="absolute top-4 right-4 cursor-pointer"
+        />
         <h2 className="text-2xl p-4">
           Best<span className="font-bold">Eats</span>
         </h2>
-        <ul className="flex flex-col p-4 text-gray-800">
-          <li className="flex p-4 text-xl">
+        <ul className="flex flex-col p-4 text-gray-800 cursor-pointer">
+          <li className="flex p-4 text-xl ">
             <TbTruckDelivery size={30} className="mr-4" />
             Orders
+          </li>
+          <li className="flex p-4 text-xl">
+            <MdFavorite size={30} className="mr-4" />
+            Favorites
+          </li>
+          <li className="flex p-4 text-xl">
+            <FaWallet size={30} className="mr-4" />
+            Wallet
+          </li>
+          <li className="flex p-4 text-xl">
+            <MdHelp size={30} className="mr-4" />
+            Help
+          </li>
+          <li className="flex p-4 text-xl">
+            <AiFillTag size={30} className="mr-4" />
+            Promotions
+          </li>
+          <li className="flex p-4 text-xl">
+            <BsFillSaveFill size={30} className="mr-4" />
+            Best One
+          </li>
+          <li className="flex p-4 text-xl">
+            <FaUserFriends size={30} className="mr-4" />
+            Invite Friends
           </li>
         </ul>
       </div>

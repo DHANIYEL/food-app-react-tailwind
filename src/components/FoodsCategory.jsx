@@ -21,7 +21,7 @@ const FoodsCategory = () => {
   };
 
   return (
-    <div className="px-4 py-12 max-w-[1640px] m-auto ">
+    <div className="px-4 py-12 max-w-[1640px] mx-auto ">
       <h1 className="font-bold text-4xl text-orange-600 text-center">
         Top Rated Menu Items
       </h1>

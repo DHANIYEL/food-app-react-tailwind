@@ -1,6 +1,8 @@
 import React from "react";
 import { data } from "../data/data.js";
+import { useState } from "react";
 const FoodsCategory = () => {
+  const [foods, setFoods] = useState(data);
   return (
     <div className="px-4 py-12 max-h-[1640px] mx-auto ">
       <h1 className="font-bold text-4xl text-orange-600 text-center">
@@ -47,6 +49,30 @@ const FoodsCategory = () => {
             </button>
           </div>
         </div>
+      </div>
+      {/* display Foods (Maping Items) */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-6">
+        {foods.map((Items, index) => (
+          <div
+            key={index}
+            className="border shadow-lg rounded-lg hover:scale-105 hover:duration-300"
+          >
+            <img
+              src={Items.image}
+              alt={Items.name}
+              className="w-full h-[200px] object-cover rounded-t-lg"
+            />
+            <div className="flex justify-between px-2 py-4">
+              <p className="font-bold ">{Items.name}</p>
+              <p>
+                <span className="bg-orange-600 text-white p-1 rounded-full">
+                  {Items.price}
+                </span>
+              </p>
+            </div>
+            {/* <p>{Items.category}</p> */}
+          </div>
+        ))}
       </div>
     </div>
   );
